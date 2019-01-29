@@ -26,31 +26,13 @@ namespace WPF_MasterDetailApp.Models
 
         #region FIELDS
 
-        private TalentAgency _talentAgency;
-        private ObservableCollection<Character> _characters;
-        private Character _selectedCharacter;
+
 
         #endregion
 
         #region PROPERTIES
 
-        public TalentAgency TalentAgency
-        {
-            get { return _talentAgency; }
-            set { _talentAgency = value; }
-        }
 
-        public ObservableCollection<Character> Characters
-        {
-            get { return _characters; }
-            set { _characters = value; }
-        }
-
-        public Character SelectedCharacter
-        {
-            get { return _selectedCharacter; }
-            set { _selectedCharacter = value; }
-        }
 
         #endregion
 
@@ -72,7 +54,5 @@ namespace WPF_MasterDetailApp.Models
 
 
         #endregion
-
-
     }
 }
