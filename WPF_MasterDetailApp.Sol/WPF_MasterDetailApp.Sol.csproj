@@ -62,7 +62,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="BusinessLayer\FlintstoneViewerBL.cs" />
+    <Compile Include="BusinessLayer\CharacterViewerBL.cs" />
     <Compile Include="DataAccessLayer\IDataService.cs" />
     <Compile Include="DataAccessLayer\XmlDataService.cs" />
     <Compile Include="Data\AppConfig.cs" />

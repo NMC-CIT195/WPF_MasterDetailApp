@@ -16,7 +16,7 @@ namespace WPF_MasterDetailApp
     {
         private void App_Startup(object sender, StartupEventArgs e)
         {
-            FlintstoneViewerBL flintstoneViewerBL = new FlintstoneViewerBL();
+            CharacterViewerBL characterViewerBL = new CharacterViewerBL();
         }
     }
 }

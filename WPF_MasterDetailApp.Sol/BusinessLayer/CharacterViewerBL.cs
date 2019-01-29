@@ -11,7 +11,7 @@ using WPF_MasterDetailApp.Models;
 
 namespace WPF_MasterDetailApp.BusinessLayer
 {
-    public class FlintstoneViewerBL
+    public class CharacterViewerBL
     {
         #region ENUMS
 
@@ -32,7 +32,7 @@ namespace WPF_MasterDetailApp.BusinessLayer
 
         #region CONSTRUCTORS
 
-        public FlintstoneViewerBL()
+        public CharacterViewerBL()
         {
             //
             // instantiate the viewmodel and initialize the data set
