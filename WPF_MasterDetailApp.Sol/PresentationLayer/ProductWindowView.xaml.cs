@@ -19,13 +19,17 @@ namespace WPF_MasterDetailApp
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindowView : Window
+    public partial class ProductWindowView : Window
     {
-        public MainWindowView()
+        ProductWindowViewModel _productWindowViewModel;
+
+        public ProductWindowView(ProductWindowViewModel productViewModel)
         {
+            _productWindowViewModel = productViewModel;
+
             InitializeComponent();
-            MainWindowViewModel MainWindowViewModel = new MainWindowViewModel();
-            DataContext = MainWindowViewModel;
+
+            DataContext = _productWindowViewModel;
         }
 
         private void Button_Quit_Click(object sender, RoutedEventArgs e)
@@ -38,9 +42,19 @@ namespace WPF_MasterDetailApp
 
         }
 
-        private void RadioButton_Sort_Checked(object sender, RoutedEventArgs e)
+        private void Button_Delete_Click(object sender, RoutedEventArgs e)
         {
+            _productWindowViewModel.DeleteCharacter();
+        }
 
+        private void RadioButton_LastNameSort_Checked(object sender, RoutedEventArgs e)
+        {
+            _productWindowViewModel.SortList(ProductWindowViewModel.ProductListSort.LastName);            
+        }
+
+        private void RadioButton_AgeSort_Checked(object sender, RoutedEventArgs e)
+        {
+            _productWindowViewModel.SortList(ProductWindowViewModel.ProductListSort.Age);
         }
     }
 }

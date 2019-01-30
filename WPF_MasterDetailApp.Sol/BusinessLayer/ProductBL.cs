@@ -11,7 +11,7 @@ using WPF_MasterDetailApp.Models;
 
 namespace WPF_MasterDetailApp.BusinessLayer
 {
-    public class CharacterViewerBL
+    public class ProductBL
     {
         #region ENUMS
 
@@ -21,8 +21,8 @@ namespace WPF_MasterDetailApp.BusinessLayer
 
         #region FIELDS
 
-        MainWindowView _mainWindowView;
-        MainWindowViewModel _mainWindowViewModel;
+        ProductWindowView _productWindowView;
+        ProductWindowViewModel __productWindowViewModel;
 
         #endregion
 
@@ -32,30 +32,30 @@ namespace WPF_MasterDetailApp.BusinessLayer
 
         #region CONSTRUCTORS
 
-        public CharacterViewerBL()
+        public ProductBL()
         {
             //
-            // instantiate the viewmodel and initialize the data set
+            // instantiate the view model and initialize the data set
             //
-            _mainWindowViewModel = new MainWindowViewModel();
-            InitializeTalentAgencyData();
-            InitializeCharacterData();
+            __productWindowViewModel = new ProductWindowViewModel();
+            InitializeCompanyData();
+            InitializeProductData();
 
             //
             // instantiate and show the Main Window
             //
-            _mainWindowView = new MainWindowView();
-            _mainWindowView.DataContext = _mainWindowViewModel;
-            _mainWindowView.Show();
+            _productWindowView = new ProductWindowView(__productWindowViewModel);
+            _productWindowView.DataContext = __productWindowViewModel;
+            _productWindowView.Show();
         }
 
         #endregion
 
         #region METHODS
 
-        private void InitializeTalentAgencyData()
+        private void InitializeCompanyData()
         {
-            _mainWindowViewModel.TalentAgency = new TalentAgency()
+            __productWindowViewModel.TalentAgency = new TalentAgency()
             {
                 Name = "Troglodyte Talent Agency",
                 Address = "465 Jurassic Lane",
@@ -64,9 +64,9 @@ namespace WPF_MasterDetailApp.BusinessLayer
         }
 
 
-        private void InitializeCharacterData()
+        private void InitializeProductData()
         {
-            _mainWindowViewModel.Characters = new ObservableCollection<Character>()
+            __productWindowViewModel.Characters = new ObservableCollection<Character>()
             {
                 new Character()
                 {

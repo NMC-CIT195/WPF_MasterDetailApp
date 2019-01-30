@@ -11,30 +11,16 @@ using System.Windows.Input;
 
 namespace WPF_MasterDetailApp.Models
 {
-    public class MainWindowViewModel : ObservableObject
+    public class ProductWindowViewModel : ObservableObject
     {
-        #region COMMANDS
-
-        public ICommand DeleteCharacterCommand
-        {
-            get { return new DelegateCommand(OnDeleteCharacter); }
-        }
-
-        public ICommand EditCharacterCommand
-        {
-            get { return new DelegateCommand(OnEditCharacter); }
-        }
-
-        public ICommand SortListByAgeCommand
-        {
-            get { return new DelegateCommand(OnSortListByAge); }
-        }
-
-        #endregion
 
         #region ENUMS
 
-
+        public enum ProductListSort
+        {
+            LastName,
+            Age
+        }
 
         #endregion
 
@@ -78,7 +64,7 @@ namespace WPF_MasterDetailApp.Models
 
         #region CONSTRUCTORS
 
-        public MainWindowViewModel()
+        public ProductWindowViewModel()
         {
 
         }
@@ -87,7 +73,7 @@ namespace WPF_MasterDetailApp.Models
 
         #region METHODS
 
-        private void OnDeleteCharacter()
+        public void DeleteCharacter()
         {
             MessageBoxResult messageBoxResult = System.Windows.MessageBox.Show($"Are you sure you want to delete {_selectedCharacter.FullName}?", "Delete Character", System.Windows.MessageBoxButton.OKCancel);
 
@@ -97,14 +83,27 @@ namespace WPF_MasterDetailApp.Models
             }
         }
 
-        private void OnEditCharacter()
+        public void EditCharacter()
         {
 
         }
 
-        private void OnSortListByAge()
+        public void SortList(ProductListSort productListSort)
         {
-                _characters = new ObservableCollection<Character>(_characters.OrderBy(c => c.Age));
+            switch (productListSort)
+            {
+                case ProductListSort.LastName:
+                    _characters = new ObservableCollection<Character>(_characters.OrderBy(c => c.LastName));
+                    RaisePropertyChangedEvent("Characters");
+                    break;
+                case ProductListSort.Age:
+                    _characters = new ObservableCollection<Character>(_characters.OrderBy(c => c.Age));
+                    RaisePropertyChangedEvent("Characters");
+                    break;
+                default:
+                    break;
+            }
+
         }
 
         #endregion
