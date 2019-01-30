@@ -37,9 +37,8 @@ namespace WPF_MasterDetailApp.BusinessLayer
             //
             // instantiate the view model and initialize the data set
             //
-            __productWindowViewModel = new ProductWindowViewModel();
-            InitializeCompanyData();
-            InitializeProductData();
+
+            __productWindowViewModel = new ProductWindowViewModel(GetCompanyData(), GetProductData());
 
             //
             // instantiate and show the Main Window
@@ -53,9 +52,9 @@ namespace WPF_MasterDetailApp.BusinessLayer
 
         #region METHODS
 
-        private void InitializeCompanyData()
+        private TalentAgency GetCompanyData()
         {
-            __productWindowViewModel.TalentAgency = new TalentAgency()
+            return new TalentAgency()
             {
                 Name = "Troglodyte Talent Agency",
                 Address = "465 Jurassic Lane",
@@ -64,9 +63,9 @@ namespace WPF_MasterDetailApp.BusinessLayer
         }
 
 
-        private void InitializeProductData()
+        private List<Character> GetProductData()
         {
-            __productWindowViewModel.Characters = new ObservableCollection<Character>()
+            return new List<Character>()
             {
                 new Character()
                 {

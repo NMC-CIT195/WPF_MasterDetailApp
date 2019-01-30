@@ -19,7 +19,8 @@ namespace WPF_MasterDetailApp.Models
         public enum ProductListSort
         {
             LastName,
-            Age
+            Age,
+            AverageAnnualGross
         }
 
         #endregion
@@ -27,7 +28,8 @@ namespace WPF_MasterDetailApp.Models
         #region FIELDS
 
         private TalentAgency _talentAgency;
-        private ObservableCollection<Character> _characters;
+        private ObservableCollection<Character> _activeCharacters;
+        private List<Character> _allCharacters;
         private Character _selectedCharacter;
 
         #endregion
@@ -40,10 +42,16 @@ namespace WPF_MasterDetailApp.Models
             set { _talentAgency = value; }
         }
 
-        public ObservableCollection<Character> Characters
+        public List<Character> AllCharacters
         {
-            get { return _characters; }
-            set { _characters = value; }
+            get { return _allCharacters; }
+            set { _allCharacters = value; }
+        }
+
+        public ObservableCollection<Character> ActiveCharacters
+        {
+            get { return _activeCharacters; }
+            set { _activeCharacters = value; }
         }
 
         public Character SelectedCharacter
@@ -64,9 +72,11 @@ namespace WPF_MasterDetailApp.Models
 
         #region CONSTRUCTORS
 
-        public ProductWindowViewModel()
+        public ProductWindowViewModel(TalentAgency company, List<Character> products)
         {
-
+            _allCharacters = products;
+            _activeCharacters = new ObservableCollection<Character>(products);
+            _talentAgency = company;
         }
 
         #endregion
@@ -79,7 +89,8 @@ namespace WPF_MasterDetailApp.Models
 
             if (messageBoxResult == MessageBoxResult.OK)
             {
-                _characters.Remove(_selectedCharacter);
+                _allCharacters.Remove(_selectedCharacter);
+                _activeCharacters.Remove(_selectedCharacter);
             }
         }
 
@@ -93,17 +104,33 @@ namespace WPF_MasterDetailApp.Models
             switch (productListSort)
             {
                 case ProductListSort.LastName:
-                    _characters = new ObservableCollection<Character>(_characters.OrderBy(c => c.LastName));
-                    RaisePropertyChangedEvent("Characters");
+                    _activeCharacters = new ObservableCollection<Character>(_allCharacters.OrderBy(c => c.LastName));
+                    RaisePropertyChangedEvent("ActiveCharacters");
                     break;
                 case ProductListSort.Age:
-                    _characters = new ObservableCollection<Character>(_characters.OrderBy(c => c.Age));
-                    RaisePropertyChangedEvent("Characters");
+                    _activeCharacters = new ObservableCollection<Character>(_allCharacters.OrderBy(c => c.Age));
+                    RaisePropertyChangedEvent("ActiveCharacters");
+                    break;
+                case ProductListSort.AverageAnnualGross:
+                    _activeCharacters = new ObservableCollection<Character>(_allCharacters.OrderBy(c => c.AverageAnnualGross));
+                    RaisePropertyChangedEvent("ActiveCharacters");
                     break;
                 default:
                     break;
             }
+        }
 
+        public void FilterLastName(string lastName)
+        {
+            if (lastName != "All Names")
+            {
+                _activeCharacters = new ObservableCollection<Character>(_allCharacters.Where(c => c.LastName == lastName));
+            }
+            else
+            {
+                _activeCharacters = new ObservableCollection<Character>(_activeCharacters);
+            }
+            RaisePropertyChangedEvent("ActiveCharacters");
         }
 
         #endregion

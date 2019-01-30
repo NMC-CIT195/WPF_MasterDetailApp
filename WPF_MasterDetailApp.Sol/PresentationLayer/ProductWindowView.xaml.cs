@@ -49,12 +49,37 @@ namespace WPF_MasterDetailApp
 
         private void RadioButton_LastNameSort_Checked(object sender, RoutedEventArgs e)
         {
-            _productWindowViewModel.SortList(ProductWindowViewModel.ProductListSort.LastName);            
+            if (IsLoaded)
+            {
+                _productWindowViewModel.SortList(ProductWindowViewModel.ProductListSort.LastName);
+            }
         }
 
         private void RadioButton_AgeSort_Checked(object sender, RoutedEventArgs e)
         {
-            _productWindowViewModel.SortList(ProductWindowViewModel.ProductListSort.Age);
+            if (IsLoaded)
+            {
+                _productWindowViewModel.SortList(ProductWindowViewModel.ProductListSort.Age);
+            }
+        }
+
+        private void RadioButton_AverageAnnualGrossSort_Checked(object sender, RoutedEventArgs e)
+        {
+            if (IsLoaded)
+            {
+                _productWindowViewModel.SortList(ProductWindowViewModel.ProductListSort.AverageAnnualGross);
+            }
+        }
+
+        private void ComboBox_LastNameFilter_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (IsLoaded)
+            {
+                ComboBox comboBox = sender as ComboBox;
+                string lastName = comboBox.SelectionBoxItem.ToString();
+                _productWindowViewModel.FilterLastName(lastName);
+            }
+
         }
     }
 }
