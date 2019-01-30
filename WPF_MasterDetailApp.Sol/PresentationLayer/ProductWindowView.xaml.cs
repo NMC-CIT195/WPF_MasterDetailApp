@@ -76,7 +76,7 @@ namespace WPF_MasterDetailApp
             if (IsLoaded)
             {
                 ComboBox comboBox = sender as ComboBox;
-                string lastName = comboBox.SelectionBoxItem.ToString();
+                string lastName = (comboBox.SelectedItem as ComboBoxItem).Content.ToString();
                 _productWindowViewModel.FilterLastName(lastName);
             }
 

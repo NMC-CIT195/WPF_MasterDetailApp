@@ -128,7 +128,7 @@ namespace WPF_MasterDetailApp.Models
             }
             else
             {
-                _activeCharacters = new ObservableCollection<Character>(_activeCharacters);
+                _activeCharacters = new ObservableCollection<Character>(_allCharacters);
             }
             RaisePropertyChangedEvent("ActiveCharacters");
         }
