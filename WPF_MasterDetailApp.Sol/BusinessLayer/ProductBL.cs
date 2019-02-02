@@ -41,7 +41,7 @@ namespace WPF_MasterDetailApp.BusinessLayer
             __productWindowViewModel = new ProductWindowViewModel(GetCompanyData(), GetProductData());
 
             //
-            // instantiate and show the Main Window
+            // instantiate, set the data context, and show the Main Window
             //
             _productWindowView = new ProductWindowView(__productWindowViewModel);
             _productWindowView.DataContext = __productWindowViewModel;
@@ -52,9 +52,9 @@ namespace WPF_MasterDetailApp.BusinessLayer
 
         #region METHODS
 
-        private TalentAgency GetCompanyData()
+        private Company GetCompanyData()
         {
-            return new TalentAgency()
+            return new Company()
             {
                 Name = "Troglodyte Talent Agency",
                 Address = "465 Jurassic Lane",

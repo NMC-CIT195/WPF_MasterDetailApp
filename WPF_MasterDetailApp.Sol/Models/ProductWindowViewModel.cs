@@ -27,7 +27,7 @@ namespace WPF_MasterDetailApp.Models
 
         #region FIELDS
 
-        private TalentAgency _talentAgency;
+        private Company _talentAgency;
         private ObservableCollection<Character> _activeCharacters;
         private List<Character> _allCharacters;
         private Character _selectedCharacter;
@@ -36,7 +36,7 @@ namespace WPF_MasterDetailApp.Models
 
         #region PROPERTIES
 
-        public TalentAgency TalentAgency
+        public Company TalentAgency
         {
             get { return _talentAgency; }
             set { _talentAgency = value; }
@@ -72,7 +72,7 @@ namespace WPF_MasterDetailApp.Models
 
         #region CONSTRUCTORS
 
-        public ProductWindowViewModel(TalentAgency company, List<Character> products)
+        public ProductWindowViewModel(Company company, List<Character> products)
         {
             _allCharacters = products;
             _activeCharacters = new ObservableCollection<Character>(products);
@@ -104,15 +104,15 @@ namespace WPF_MasterDetailApp.Models
             switch (productListSort)
             {
                 case ProductListSort.LastName:
-                    _activeCharacters = new ObservableCollection<Character>(_allCharacters.OrderBy(c => c.LastName));
+                    _activeCharacters = new ObservableCollection<Character>(_activeCharacters.OrderBy(c => c.LastName));
                     RaisePropertyChangedEvent("ActiveCharacters");
                     break;
                 case ProductListSort.Age:
-                    _activeCharacters = new ObservableCollection<Character>(_allCharacters.OrderBy(c => c.Age));
+                    _activeCharacters = new ObservableCollection<Character>(_activeCharacters.OrderBy(c => c.Age));
                     RaisePropertyChangedEvent("ActiveCharacters");
                     break;
                 case ProductListSort.AverageAnnualGross:
-                    _activeCharacters = new ObservableCollection<Character>(_allCharacters.OrderBy(c => c.AverageAnnualGross));
+                    _activeCharacters = new ObservableCollection<Character>(_activeCharacters.OrderBy(c => c.AverageAnnualGross));
                     RaisePropertyChangedEvent("ActiveCharacters");
                     break;
                 default:
@@ -120,7 +120,7 @@ namespace WPF_MasterDetailApp.Models
             }
         }
 
-        public void FilterLastName(string lastName)
+        public void FilterListLastName(string lastName)
         {
             if (lastName != "All Names")
             {
@@ -129,6 +129,15 @@ namespace WPF_MasterDetailApp.Models
             else
             {
                 _activeCharacters = new ObservableCollection<Character>(_allCharacters);
+            }
+            RaisePropertyChangedEvent("ActiveCharacters");
+        }
+
+        public void SearchListLastName(string searchTerm)
+        {
+            if (searchTerm != "")
+            {
+                _activeCharacters = new ObservableCollection<Character>(_allCharacters.Where(c => c.LastName.ToLower().Contains(searchTerm.ToLower())));
             }
             RaisePropertyChangedEvent("ActiveCharacters");
         }

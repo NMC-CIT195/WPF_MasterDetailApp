@@ -37,7 +37,7 @@ namespace WPF_MasterDetailApp
             Environment.Exit(0);
         }
 
-        private void Button_Edit_Click(object sender, RoutedEventArgs e)
+        private void Button_Add_Click(object sender, RoutedEventArgs e)
         {
 
         }
@@ -77,9 +77,17 @@ namespace WPF_MasterDetailApp
             {
                 ComboBox comboBox = sender as ComboBox;
                 string lastName = (comboBox.SelectedItem as ComboBoxItem).Content.ToString();
-                _productWindowViewModel.FilterLastName(lastName);
+                _productWindowViewModel.FilterListLastName(lastName);
             }
 
+        }
+
+        private void Button_Search_Click(object sender, RoutedEventArgs e)
+        {
+            if (TextBox_Search.Text != "")
+            {
+               _productWindowViewModel.SearchListLastName(TextBox_Search.Text);
+            }
         }
     }
 }

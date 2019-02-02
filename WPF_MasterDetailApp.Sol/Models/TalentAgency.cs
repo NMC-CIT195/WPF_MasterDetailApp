@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WPF_MasterDetailApp.Models
 {
-    public class TalentAgency
+    public class Company
     {
         public string Name { get; set; }
         public string Address { get; set; }
