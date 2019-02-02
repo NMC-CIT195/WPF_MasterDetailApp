@@ -11,7 +11,7 @@ using System.Windows.Input;
 
 namespace WPF_MasterDetailApp.Models
 {
-    public class ProductAddWindowViewModel
+    public class ProductAddWindowPresenter
     {
 
         #region ENUMS
@@ -30,7 +30,7 @@ namespace WPF_MasterDetailApp.Models
 
         #region CONSTRUCTORS
 
-        public ProductAddWindowViewModel()
+        public ProductAddWindowPresenter()
         {
 
         }

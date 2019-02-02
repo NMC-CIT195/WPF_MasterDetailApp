@@ -22,7 +22,7 @@ namespace WPF_MasterDetailApp.BusinessLayer
         #region FIELDS
 
         ProductWindowView _productWindowView;
-        ProductWindowViewModel __productWindowViewModel;
+        ProductWindowPresenter __productWindowPresenter;
 
         #endregion
 
@@ -38,13 +38,13 @@ namespace WPF_MasterDetailApp.BusinessLayer
             // instantiate the view model and initialize the data set
             //
 
-            __productWindowViewModel = new ProductWindowViewModel(GetCompanyData(), GetProductData());
+            __productWindowPresenter = new ProductWindowPresenter(GetCompanyData(), GetProductData());
 
             //
             // instantiate, set the data context, and show the Main Window
             //
-            _productWindowView = new ProductWindowView(__productWindowViewModel);
-            _productWindowView.DataContext = __productWindowViewModel;
+            _productWindowView = new ProductWindowView(__productWindowPresenter);
+            _productWindowView.DataContext = __productWindowPresenter;
             _productWindowView.Show();
         }
 

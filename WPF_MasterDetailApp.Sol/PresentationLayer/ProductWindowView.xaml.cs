@@ -23,7 +23,7 @@ namespace WPF_MasterDetailApp
     {
         #region FIELDS
 
-        ProductWindowViewModel _productWindowViewModel;
+        ProductWindowPresenter _productWindowPresenter;
 
         #endregion
 
@@ -41,14 +41,14 @@ namespace WPF_MasterDetailApp
 
         private void Button_Delete_Click(object sender, RoutedEventArgs e)
         {
-            _productWindowViewModel.DeleteCharacter();
+            _productWindowPresenter.DeleteCharacter();
         }
 
         private void RadioButton_LastNameSort_Checked(object sender, RoutedEventArgs e)
         {
             if (IsLoaded)
             {
-                _productWindowViewModel.SortList(ProductWindowViewModel.ProductListSort.LastName);
+                _productWindowPresenter.SortList(ProductWindowPresenter.ProductListSort.LastName);
             }
         }
 
@@ -56,7 +56,7 @@ namespace WPF_MasterDetailApp
         {
             if (IsLoaded)
             {
-                _productWindowViewModel.SortList(ProductWindowViewModel.ProductListSort.Age);
+                _productWindowPresenter.SortList(ProductWindowPresenter.ProductListSort.Age);
             }
         }
 
@@ -64,7 +64,7 @@ namespace WPF_MasterDetailApp
         {
             if (IsLoaded)
             {
-                _productWindowViewModel.SortList(ProductWindowViewModel.ProductListSort.AverageAnnualGross);
+                _productWindowPresenter.SortList(ProductWindowPresenter.ProductListSort.AverageAnnualGross);
             }
         }
 
@@ -74,7 +74,7 @@ namespace WPF_MasterDetailApp
             {
                 ComboBox comboBox = sender as ComboBox;
                 string lastName = (comboBox.SelectedItem as ComboBoxItem).Content.ToString();
-                _productWindowViewModel.FilterListLastName(lastName);
+                _productWindowPresenter.FilterListLastName(lastName);
             }
 
         }
@@ -83,7 +83,7 @@ namespace WPF_MasterDetailApp
         {
             if (TextBox_Search.Text != "")
             {
-               _productWindowViewModel.SearchListLastName(TextBox_Search.Text);
+               _productWindowPresenter.SearchListLastName(TextBox_Search.Text);
             }
         }
 
@@ -91,13 +91,13 @@ namespace WPF_MasterDetailApp
 
         #region CONSTRUCTORS
 
-        public ProductWindowView(ProductWindowViewModel productViewModel)
+        public ProductWindowView(ProductWindowPresenter productPresenter)
         {
-            _productWindowViewModel = productViewModel;
+            _productWindowPresenter = productPresenter;
 
             InitializeComponent();
 
-            DataContext = _productWindowViewModel;
+            DataContext = _productWindowPresenter;
         }
 
         #endregion

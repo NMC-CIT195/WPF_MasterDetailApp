@@ -71,8 +71,8 @@
     <Compile Include="DataAccessLayer\XmlDataService.cs" />
     <Compile Include="Data\AppConfig.cs" />
     <Compile Include="Models\Product.cs" />
-    <Compile Include="Models\ProductAddWindowViewModel.cs" />
-    <Compile Include="Models\ProductWindowViewModel.cs" />
+    <Compile Include="Models\ProductAddWindowPresenter.cs" />
+    <Compile Include="Models\ProductWindowPresenter.cs" />
     <Compile Include="Models\ObservableObject.cs" />
     <Compile Include="Models\Company.cs" />
     <Compile Include="PresentationLayer\ProductAddWindowView.xaml.cs">

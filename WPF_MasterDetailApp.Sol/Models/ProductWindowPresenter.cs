@@ -11,7 +11,7 @@ using System.Windows.Input;
 
 namespace WPF_MasterDetailApp.Models
 {
-    public class ProductWindowViewModel : ObservableObject
+    public class ProductWindowPresenter : ObservableObject
     {
 
         #region ENUMS
@@ -74,7 +74,7 @@ namespace WPF_MasterDetailApp.Models
 
         #region CONSTRUCTORS
 
-        public ProductWindowViewModel(Company company, List<Product> products)
+        public ProductWindowPresenter(Company company, List<Product> products)
         {
             _allProducts = products;
             _companyInfo = company;
