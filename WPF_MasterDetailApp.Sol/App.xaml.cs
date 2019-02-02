@@ -16,7 +16,7 @@ namespace WPF_MasterDetailApp
     {
         private void App_Startup(object sender, StartupEventArgs e)
         {
-            ProductBL characterViewerBL = new ProductBL();
+            ProductBL productViewerBL = new ProductBL();
         }
     }
 }

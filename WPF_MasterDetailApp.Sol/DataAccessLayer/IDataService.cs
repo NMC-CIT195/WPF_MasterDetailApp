@@ -9,7 +9,7 @@ namespace WPF_MasterDetailApp.DataAccessLayer
 {
     public interface IDataService
     {
-        List<Character> ReadAll();
-        void WriteAll(List<Character> characters);
+        List<Product> ReadAll();
+        void WriteAll(List<Product> characters);
     }
 }

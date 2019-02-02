@@ -18,17 +18,17 @@ namespace WPF_MasterDetailApp.DataAccessLayer
         /// read the xml file and load a list of character objects
         /// </summary>
         /// <returns>list of characters</returns>
-        public List<Character> ReadAll()
+        public List<Product> ReadAll()
         {
-            List<Character> characters = new List<Character>();
-            XmlSerializer serializer = new XmlSerializer(typeof(List<Character>), new XmlRootAttribute("Characters"));
+            List<Product> characters = new List<Product>();
+            XmlSerializer serializer = new XmlSerializer(typeof(List<Product>), new XmlRootAttribute("Characters"));
 
             try
             {
                 StreamReader reader = new StreamReader(_dataFilePath);
                 using (reader)
                 {
-                    characters = (List<Character>)serializer.Deserialize(reader);
+                    characters = (List<Product>)serializer.Deserialize(reader);
                 }
 
             }
@@ -44,9 +44,9 @@ namespace WPF_MasterDetailApp.DataAccessLayer
         /// write the current list of characters to the xml data file
         /// </summary>
         /// <param name="characters">list of characters</param>
-        public void WriteAll(List<Character> characters)
+        public void WriteAll(List<Product> characters)
         {
-            XmlSerializer serializer = new XmlSerializer(typeof(List<Character>), new XmlRootAttribute("Characters"));
+            XmlSerializer serializer = new XmlSerializer(typeof(List<Product>), new XmlRootAttribute("Characters"));
 
             try
             {

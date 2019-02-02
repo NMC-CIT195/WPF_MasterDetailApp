@@ -21,9 +21,9 @@ namespace WPF_MasterDetailApp
     /// </summary>
     public partial class ProductAddWindowView : Window
     {
-        Character _character;
+        Product _character;
 
-        public ProductAddWindowView(Character character)
+        public ProductAddWindowView(Product character)
         {
             _character = character;
 

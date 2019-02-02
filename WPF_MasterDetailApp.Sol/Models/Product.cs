@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WPF_MasterDetailApp.Models
 {
-    public class Character : ObservableObject
+    public class Product : ObservableObject
     {
         #region ENUMS
 
@@ -107,7 +107,7 @@ namespace WPF_MasterDetailApp.Models
 
         #region CONSTRUCTORS
 
-        public Character()
+        public Product()
         {
 
         }

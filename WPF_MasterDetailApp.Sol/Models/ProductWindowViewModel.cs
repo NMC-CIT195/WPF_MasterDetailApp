@@ -27,44 +27,44 @@ namespace WPF_MasterDetailApp.Models
 
         #region FIELDS
 
-        private Company _talentAgency;
-        private ObservableCollection<Character> _activeCharacters;
-        private List<Character> _allCharacters;
-        private Character _selectedCharacter;
+        private Company _companyInfo;
+        private ObservableCollection<Product> _activeProducts;
+        private List<Product> _allProducts;
+        private Product _selectedProduct;
 
         #endregion
 
         #region PROPERTIES
 
-        public Company TalentAgency
+        public Company CompanyInfo
         {
-            get { return _talentAgency; }
-            set { _talentAgency = value; }
+            get { return _companyInfo; }
+            set { _companyInfo = value; }
         }
 
-        public List<Character> AllCharacters
+        public List<Product> AllProducts
         {
-            get { return _allCharacters; }
-            set { _allCharacters = value; }
+            get { return _allProducts; }
+            set { _allProducts = value; }
         }
 
-        public ObservableCollection<Character> ActiveCharacters
+        public ObservableCollection<Product> ActiveProducts
         {
-            get { return _activeCharacters; }
-            set { _activeCharacters = value; }
+            get { return _activeProducts; }
+            set { _activeProducts = value; }
         }
 
-        public Character SelectedCharacter
+        public Product SelectedProduct
         {
-            get { return _selectedCharacter; }
+            get { return _selectedProduct; }
             set
             {
-                if (_selectedCharacter == value)
+                if (_selectedProduct == value)
                 {
                     return;
                 }
-                _selectedCharacter = value;
-                RaisePropertyChangedEvent("SelectedCharacter");
+                _selectedProduct = value;
+                RaisePropertyChangedEvent("SelectedProduct");
             }
         }
 
@@ -72,11 +72,11 @@ namespace WPF_MasterDetailApp.Models
 
         #region CONSTRUCTORS
 
-        public ProductWindowViewModel(Company company, List<Character> products)
+        public ProductWindowViewModel(Company company, List<Product> products)
         {
-            _allCharacters = products;
-            _activeCharacters = new ObservableCollection<Character>(products);
-            _talentAgency = company;
+            _allProducts = products;
+            _activeProducts = new ObservableCollection<Product>(products);
+            _companyInfo = company;
         }
 
         #endregion
@@ -85,12 +85,12 @@ namespace WPF_MasterDetailApp.Models
 
         public void DeleteCharacter()
         {
-            MessageBoxResult messageBoxResult = System.Windows.MessageBox.Show($"Are you sure you want to delete {_selectedCharacter.FullName}?", "Delete Character", System.Windows.MessageBoxButton.OKCancel);
+            MessageBoxResult messageBoxResult = System.Windows.MessageBox.Show($"Are you sure you want to delete {_selectedProduct.FullName}?", "Delete Character", System.Windows.MessageBoxButton.OKCancel);
 
             if (messageBoxResult == MessageBoxResult.OK)
             {
-                _allCharacters.Remove(_selectedCharacter);
-                _activeCharacters.Remove(_selectedCharacter);
+                _allProducts.Remove(_selectedProduct);
+                _activeProducts.Remove(_selectedProduct);
             }
         }
 
@@ -104,16 +104,16 @@ namespace WPF_MasterDetailApp.Models
             switch (productListSort)
             {
                 case ProductListSort.LastName:
-                    _activeCharacters = new ObservableCollection<Character>(_activeCharacters.OrderBy(c => c.LastName));
-                    RaisePropertyChangedEvent("ActiveCharacters");
+                    _activeProducts = new ObservableCollection<Product>(_activeProducts.OrderBy(c => c.LastName));
+                    RaisePropertyChangedEvent("ActiveProducts");
                     break;
                 case ProductListSort.Age:
-                    _activeCharacters = new ObservableCollection<Character>(_activeCharacters.OrderBy(c => c.Age));
-                    RaisePropertyChangedEvent("ActiveCharacters");
+                    _activeProducts = new ObservableCollection<Product>(_activeProducts.OrderBy(c => c.Age));
+                    RaisePropertyChangedEvent("ActiveProducts");
                     break;
                 case ProductListSort.AverageAnnualGross:
-                    _activeCharacters = new ObservableCollection<Character>(_activeCharacters.OrderBy(c => c.AverageAnnualGross));
-                    RaisePropertyChangedEvent("ActiveCharacters");
+                    _activeProducts = new ObservableCollection<Product>(_activeProducts.OrderBy(c => c.AverageAnnualGross));
+                    RaisePropertyChangedEvent("ActiveProducts");
                     break;
                 default:
                     break;
@@ -124,22 +124,22 @@ namespace WPF_MasterDetailApp.Models
         {
             if (lastName != "All Names")
             {
-                _activeCharacters = new ObservableCollection<Character>(_allCharacters.Where(c => c.LastName == lastName));
+                _activeProducts = new ObservableCollection<Product>(_allProducts.Where(c => c.LastName == lastName));
             }
             else
             {
-                _activeCharacters = new ObservableCollection<Character>(_allCharacters);
+                _activeProducts = new ObservableCollection<Product>(_allProducts);
             }
-            RaisePropertyChangedEvent("ActiveCharacters");
+            RaisePropertyChangedEvent("ActiveProducts");
         }
 
         public void SearchListLastName(string searchTerm)
         {
             if (searchTerm != "")
             {
-                _activeCharacters = new ObservableCollection<Character>(_allCharacters.Where(c => c.LastName.ToLower().Contains(searchTerm.ToLower())));
+                _activeProducts = new ObservableCollection<Product>(_allProducts.Where(c => c.LastName.ToLower().Contains(searchTerm.ToLower())));
             }
-            RaisePropertyChangedEvent("ActiveCharacters");
+            RaisePropertyChangedEvent("ActiveProducts");
         }
 
         #endregion

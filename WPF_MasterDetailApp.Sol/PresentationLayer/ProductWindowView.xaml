@@ -30,6 +30,7 @@
         <Style x:Key="RadioButtonStyle" TargetType="RadioButton">
             <Setter Property="Foreground" Value="DarkGoldenrod"/>
             <Setter Property="FontSize" Value="12"/>
+            <Setter Property="Margin" Value="0,0,10,0"/>
         </Style>
         <Style x:Key="DetailTextBoxStyle" TargetType="TextBox">
             <Setter Property="Width" Value="120"/>
@@ -151,8 +152,8 @@
                 Margin="10,10,10,10"
                 BorderThickness="0"
                 Background="AntiqueWhite"
-                ItemsSource="{Binding ActiveCharacters}"
-                SelectedItem="{Binding SelectedCharacter, Mode=TwoWay}"
+                ItemsSource="{Binding ActiveProducts}"
+                SelectedItem="{Binding SelectedProduct, Mode=TwoWay}"
                 IsSynchronizedWithCurrentItem="true">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
@@ -214,34 +215,34 @@
                 <Image 
                     Grid.Column="0"
                     Height="200"
-                    Source="{Binding SelectedCharacter.ImageFilePath}"/>
+                    Source="{Binding SelectedProduct.ImageFilePath}"/>
                 <StackPanel
                     Grid.Column="1"
                     Margin="10,10,10,10"
                     Orientation="Vertical">
                     <StackPanel Orientation="Horizontal">
                         <Label Content="First Name: " Style="{StaticResource DetailLabelStyle}"/>
-                        <TextBox Text="{Binding SelectedCharacter.FirstName}" Style="{StaticResource DetailTextBoxStyle}"/>
+                        <TextBox Text="{Binding SelectedProduct.FirstName}" Style="{StaticResource DetailTextBoxStyle}"/>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal">
                         <Label Content="Last Name: " Style="{StaticResource DetailLabelStyle}"/>
-                        <TextBox Text="{Binding SelectedCharacter.LastName}" Style="{StaticResource DetailTextBoxStyle}"/>
+                        <TextBox Text="{Binding SelectedProduct.LastName}" Style="{StaticResource DetailTextBoxStyle}"/>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal">
                         <Label Content="Age: " Style="{StaticResource DetailLabelStyle}"/>
-                        <TextBox Text="{Binding SelectedCharacter.Age}" Style="{StaticResource DetailTextBoxStyle}"/>
+                        <TextBox Text="{Binding SelectedProduct.Age}" Style="{StaticResource DetailTextBoxStyle}"/>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal">
                         <Label Content="Gender: " Style="{StaticResource DetailLabelStyle}"/>
-                        <TextBox Text="{Binding SelectedCharacter.Gender}" Style="{StaticResource DetailTextBoxStyle}"/>
+                        <TextBox Text="{Binding SelectedProduct.Gender}" Style="{StaticResource DetailTextBoxStyle}"/>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal">
                         <Label Content="Hire Date: " Style="{StaticResource DetailLabelStyle}"/>
-                        <TextBox Text="{Binding SelectedCharacter.HireDate, StringFormat='Hire Date: \{0:MM/dd/yyyy\}'}" Style="{StaticResource DetailTextBoxStyle}"/>
+                        <TextBox Text="{Binding SelectedProduct.HireDate, StringFormat='Hire Date: \{0:MM/dd/yyyy\}'}" Style="{StaticResource DetailTextBoxStyle}"/>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal">
                         <Label Content="Average Annual Gross: " Style="{StaticResource DetailLabelStyle}"/>
-                        <TextBox Text="{Binding SelectedCharacter.AverageAnnualGross, StringFormat='\{0:c\}'}" Style="{StaticResource DetailTextBoxStyle}"/>
+                        <TextBox Text="{Binding SelectedProduct.AverageAnnualGross, StringFormat='\{0:c\}'}" Style="{StaticResource DetailTextBoxStyle}"/>
                     </StackPanel>
                     <StackPanel Orientation="Vertical">
                         <Label Content="Description: " Style="{StaticResource DetailLabelStyle}"/>
@@ -253,7 +254,7 @@
                             AcceptsReturn="True"
                             VerticalContentAlignment="Top"
                             VerticalScrollBarVisibility="Visible"
-                            Text="{Binding SelectedCharacter.Description}" 
+                            Text="{Binding SelectedProduct.Description}" 
                             Style="{StaticResource DetailTextBoxStyle}"/>
                     </StackPanel>
                 </StackPanel>
