@@ -28,9 +28,9 @@ namespace WPF_MasterDetailApp.Models
         #region FIELDS
 
         private Company _companyInfo;
-        private ObservableCollection<Product> _activeProducts;
-        private List<Product> _allProducts;
         private Product _selectedProduct;
+        private List<Product> _allProducts;
+        private ObservableCollection<Product> _activeProducts;
 
         #endregion
 
@@ -40,18 +40,6 @@ namespace WPF_MasterDetailApp.Models
         {
             get { return _companyInfo; }
             set { _companyInfo = value; }
-        }
-
-        public List<Product> AllProducts
-        {
-            get { return _allProducts; }
-            set { _allProducts = value; }
-        }
-
-        public ObservableCollection<Product> ActiveProducts
-        {
-            get { return _activeProducts; }
-            set { _activeProducts = value; }
         }
 
         public Product SelectedProduct
@@ -68,6 +56,20 @@ namespace WPF_MasterDetailApp.Models
             }
         }
 
+        public List<Product> AllProducts
+        {
+            get { return _allProducts; }
+            set { _allProducts = value; }
+        }
+
+        public ObservableCollection<Product> ActiveProducts
+        {
+            get { return _activeProducts; }
+            set { _activeProducts = value; }
+        }
+
+
+
         #endregion
 
         #region CONSTRUCTORS
@@ -75,11 +77,12 @@ namespace WPF_MasterDetailApp.Models
         public ProductWindowViewModel(Company company, List<Product> products)
         {
             _allProducts = products;
-            _activeProducts = new ObservableCollection<Product>(products);
             _companyInfo = company;
+            _activeProducts = new ObservableCollection<Product>(products);
         }
 
         #endregion
+
 
         #region METHODS
 

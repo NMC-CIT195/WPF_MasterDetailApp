@@ -21,16 +21,13 @@ namespace WPF_MasterDetailApp
     /// </summary>
     public partial class ProductWindowView : Window
     {
+        #region FIELDS
+
         ProductWindowViewModel _productWindowViewModel;
 
-        public ProductWindowView(ProductWindowViewModel productViewModel)
-        {
-            _productWindowViewModel = productViewModel;
+        #endregion
 
-            InitializeComponent();
-
-            DataContext = _productWindowViewModel;
-        }
+        #region METHODS (pass events to view model)
 
         private void Button_Quit_Click(object sender, RoutedEventArgs e)
         {
@@ -89,5 +86,20 @@ namespace WPF_MasterDetailApp
                _productWindowViewModel.SearchListLastName(TextBox_Search.Text);
             }
         }
+
+        #endregion
+
+        #region CONSTRUCTORS
+
+        public ProductWindowView(ProductWindowViewModel productViewModel)
+        {
+            _productWindowViewModel = productViewModel;
+
+            InitializeComponent();
+
+            DataContext = _productWindowViewModel;
+        }
+
+        #endregion
     }
 }
