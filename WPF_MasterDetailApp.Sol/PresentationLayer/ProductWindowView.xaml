@@ -10,7 +10,7 @@
         Width="900"
         Background="AntiqueWhite"    
         ResizeMode="NoResize"
-        WindowStyle="None"
+        WindowStyle="SingleBorderWindow"
         WindowStartupLocation="CenterScreen">
     <Window.Resources>
         <Style x:Key="HeaderStyle" TargetType="Label">

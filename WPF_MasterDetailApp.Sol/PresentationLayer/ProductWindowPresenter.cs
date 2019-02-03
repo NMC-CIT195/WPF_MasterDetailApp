@@ -86,7 +86,7 @@ namespace WPF_MasterDetailApp.Models
 
         #region METHODS
 
-        public void DeleteCharacter()
+        public void DeleteProduct()
         {
             MessageBoxResult messageBoxResult = System.Windows.MessageBox.Show($"Are you sure you want to delete {_selectedProduct.FullName}?", "Delete Character", System.Windows.MessageBoxButton.OKCancel);
 
@@ -97,9 +97,20 @@ namespace WPF_MasterDetailApp.Models
             }
         }
 
-        public void EditCharacter()
+        public void AddProduct()
         {
+            Product newProduct = new Product();
+            ProductAddWindowPresenter productAddWindowPresenter = new ProductAddWindowPresenter();
+            ProductAddWindowView productAddWindowView = new ProductAddWindowView(newProduct);
 
+            productAddWindowView.ShowDialog();
+
+            if (newProduct != null)
+            {
+                _allProducts.Add(newProduct);
+                _activeProducts = new ObservableCollection<Product>(_allProducts);
+                RaisePropertyChangedEvent("ActiveProducts");
+            }
         }
 
         public void SortList(ProductListSort productListSort)

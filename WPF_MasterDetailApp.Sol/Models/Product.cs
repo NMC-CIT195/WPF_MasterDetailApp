@@ -10,7 +10,7 @@ namespace WPF_MasterDetailApp.Models
     {
         #region ENUMS
 
-        public enum GenderType { Male, Female }
+        public enum GenderType { none, male, female }
 
         #endregion
 

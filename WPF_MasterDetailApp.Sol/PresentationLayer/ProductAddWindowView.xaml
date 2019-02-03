@@ -10,7 +10,7 @@
         Width="600"
         Background="AntiqueWhite"    
         ResizeMode="NoResize"
-        WindowStyle="None"
+        WindowStyle="SingleBorderWindow"
         WindowStartupLocation="CenterScreen">
     <Window.Resources>
         <Style x:Key="HeaderStyle" TargetType="Label">
@@ -91,7 +91,7 @@
                      <Image 
                         Grid.Column="0"
                         Height="200"
-                        Source="{Binding SelectedCharacter.ImageFilePath}"/>                   
+                        Source="{Binding ImageFilePath}"/>                   
                     <Button 
                         x:Name="Button_AddImage" 
                         Margin="10,10,10,10"
@@ -108,31 +108,32 @@
                     Orientation="Vertical">
                     <StackPanel Orientation="Horizontal">
                         <Label Content="First Name: " Style="{StaticResource DetailLabelStyle}"/>
-                        <TextBox Text="{Binding SelectedCharacter.FirstName}" Style="{StaticResource DetailTextBoxStyle}"/>
+                        <TextBox x:Name="TextBox_FirstName" Style="{StaticResource DetailTextBoxStyle}"/>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal">
                         <Label Content="Last Name: " Style="{StaticResource DetailLabelStyle}"/>
-                        <TextBox Text="{Binding SelectedCharacter.LastName}" Style="{StaticResource DetailTextBoxStyle}"/>
+                        <TextBox x:Name="TextBox_LastName" Style="{StaticResource DetailTextBoxStyle}"/>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal">
                         <Label Content="Age: " Style="{StaticResource DetailLabelStyle}"/>
-                        <TextBox Text="{Binding SelectedCharacter.Age}" Style="{StaticResource DetailTextBoxStyle}"/>
+                        <TextBox x:Name="TextBox_Age" Style="{StaticResource DetailTextBoxStyle}"/>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal">
                         <Label Content="Gender: " Style="{StaticResource DetailLabelStyle}"/>
-                        <TextBox Text="{Binding SelectedCharacter.Gender}" Style="{StaticResource DetailTextBoxStyle}"/>
+                        <TextBox x:Name="TextBox_Gender" Style="{StaticResource DetailTextBoxStyle}"/>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal">
                         <Label Content="Hire Date: " Style="{StaticResource DetailLabelStyle}"/>
-                        <TextBox Text="{Binding SelectedCharacter.HireDate, StringFormat='Hire Date: \{0:MM/dd/yyyy\}'}" Style="{StaticResource DetailTextBoxStyle}"/>
+                        <TextBox x:Name="TextBox_HireDate" Style="{StaticResource DetailTextBoxStyle}"/>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal">
                         <Label Content="Average Annual Gross: " Style="{StaticResource DetailLabelStyle}"/>
-                        <TextBox Text="{Binding SelectedCharacter.AverageAnnualGross, StringFormat='\{0:c\}'}" Style="{StaticResource DetailTextBoxStyle}"/>
+                        <TextBox x:Name="TextBox_AnnualGross" Style="{StaticResource DetailTextBoxStyle}"/>
                     </StackPanel>
                     <StackPanel Orientation="Vertical">
                         <Label Content="Description: " Style="{StaticResource DetailLabelStyle}"/>
                         <TextBox
+                            x:Name="TextBox_Description"
                             HorizontalAlignment="Left"
                             Width="300"
                             Height="120"
@@ -140,7 +141,6 @@
                             AcceptsReturn="True"
                             VerticalContentAlignment="Top"
                             VerticalScrollBarVisibility="Visible"
-                            Text="{Binding SelectedCharacter.Description}" 
                             Style="{StaticResource DetailTextBoxStyle}"/>
                     </StackPanel>
                 </StackPanel>

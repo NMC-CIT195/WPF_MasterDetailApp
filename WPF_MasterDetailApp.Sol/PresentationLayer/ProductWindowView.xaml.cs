@@ -36,12 +36,12 @@ namespace WPF_MasterDetailApp
 
         private void Button_Add_Click(object sender, RoutedEventArgs e)
         {
-
+            _productWindowPresenter.AddProduct();
         }
 
         private void Button_Delete_Click(object sender, RoutedEventArgs e)
         {
-            _productWindowPresenter.DeleteCharacter();
+            _productWindowPresenter.DeleteProduct();
         }
 
         private void RadioButton_LastNameSort_Checked(object sender, RoutedEventArgs e)

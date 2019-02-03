@@ -20,7 +20,7 @@ namespace WPF_MasterDetailApp.Models
 
         #region FIELDS
 
-        private Product _character;
+        private Product _product;
 
         #endregion
 

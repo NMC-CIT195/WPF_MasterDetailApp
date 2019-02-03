@@ -21,20 +21,22 @@ namespace WPF_MasterDetailApp
     /// </summary>
     public partial class ProductAddWindowView : Window
     {
-        Product _character;
+        Product _product;
+        string _errorMessage;
 
-        public ProductAddWindowView(Product character)
+        public ProductAddWindowView(Product product)
         {
-            _character = character;
+            _product = product;
 
             InitializeComponent();
 
-            DataContext = _character;
+            DataContext = _product;
         }
 
         private void Button_Cancel_Click(object sender, RoutedEventArgs e)
         {
-
+            _product = null;
+            Close();
         }
 
         private void Button_AddImage_Click(object sender, RoutedEventArgs e)
@@ -44,7 +46,45 @@ namespace WPF_MasterDetailApp
 
         private void Button_Save_Click(object sender, RoutedEventArgs e)
         {
+            if (IsValidateForm())
+            {
+                _product.FirstName = TextBox_FirstName.Text;
 
+                Close();
+            }
+            else
+            {
+                MessageBox.Show(_errorMessage);
+                _errorMessage = "";
+            }
+        }
+
+        private bool IsValidateForm()
+        {
+            bool isValidForm = true;
+
+            //
+            // validate required fields
+            //
+            if (TextBox_FirstName.Text == "") { _errorMessage += "The First Name field cannot be empty.\n"; isValidForm = false; }
+            if (TextBox_LastName.Text == "") { _errorMessage += "The Last Name field cannot be empty.\n"; isValidForm = false; }
+            if (TextBox_Age.Text == "") { _errorMessage += "The Age field cannot be empty.\n"; isValidForm = false; }
+            if (TextBox_Gender.Text == "") { _errorMessage += "The Gender Name field cannot be empty.\n"; isValidForm = false; }
+            if (TextBox_HireDate.Text == "") { _errorMessage += "The Hire Date field cannot be empty.\n"; isValidForm = false; }
+            if (TextBox_AnnualGross.Text == "") { _errorMessage += "The Average Annual Gross field cannot be empty.\n"; isValidForm = false; }
+            if (TextBox_Description.Text == "") { _errorMessage += "The Description field cannot be empty.\n"; isValidForm = false; }
+
+            _errorMessage += "\n";
+
+            //
+            // validate input for fields 
+            //
+            if (!int.TryParse(TextBox_Age.Text, out int age)) { _errorMessage += "Age must be an integer value.\n"; isValidForm = false; }
+            if (!DateTime.TryParse(TextBox_HireDate.Text, out DateTime hireDate)) { _errorMessage += "Hired Date must be of the form 1/1/2000.\n"; isValidForm = false; }
+            if (!double.TryParse(TextBox_AnnualGross.Text, out double annualGross)) { _errorMessage += "The annual gross must be a decimal value."; isValidForm = false; }
+            if (!Enum.TryParse(TextBox_Gender.Text.ToLower(), out Product.GenderType gender)) { _errorMessage += "Gender must be male or female.\n"; isValidForm = false; }
+
+            return isValidForm;
         }
     }
 }
