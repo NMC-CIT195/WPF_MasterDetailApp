@@ -49,6 +49,12 @@ namespace WPF_MasterDetailApp
             if (IsValidateForm())
             {
                 _product.FirstName = TextBox_FirstName.Text;
+                _product.LastName = TextBox_LastName.Text;
+                _product.Age = int.Parse(TextBox_Age.Text);
+                _product.Gender = (Product.GenderType)Enum.Parse(typeof(Product.GenderType), TextBox_Gender.Text);
+                _product.HireDate = DateTime.Parse(TextBox_HireDate.Text);
+                _product.AverageAnnualGross = double.Parse(TextBox_AnnualGross.Text);
+                _product.Description = TextBox_Description.Text;
 
                 Close();
             }

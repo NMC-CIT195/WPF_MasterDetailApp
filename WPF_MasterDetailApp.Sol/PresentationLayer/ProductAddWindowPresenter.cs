@@ -40,11 +40,15 @@ namespace WPF_MasterDetailApp.Models
         #region METHODS
 
 
-        public void EditCharacter()
+        public void SaveProduct()
         {
 
         }
 
+        public void CancelProduct()
+        {
+
+        }
 
         #endregion
 
