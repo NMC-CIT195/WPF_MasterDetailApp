@@ -28,11 +28,6 @@
             <Setter Property="FontSize" Value="12"/>
             <Setter Property="FontWeight" Value="Bold"/>
         </Style>
-        <Style x:Key="RadioButtonStyle" TargetType="RadioButton">
-            <Setter Property="Foreground" Value="DarkGoldenrod"/>
-            <Setter Property="FontSize" Value="12"/>
-            <Setter Property="Margin" Value="0,0,10,0"/>
-        </Style>
         <Style x:Key="DetailTextBoxStyle" TargetType="TextBox">
             <Setter Property="Width" Value="120"/>
             <Setter Property="Height" Value="20"/>
@@ -46,15 +41,6 @@
                 </Trigger>
             </Style.Triggers>
         </Style>
-        <Style x:Key="MasterTextBoxStyle" TargetType="TextBox">
-            <Setter Property="Foreground" Value="DarkGoldenrod"/>
-            <Setter Property="Background" Value="AntiqueWhite"/>           
-            <Setter Property="FontSize" Value="12"/>
-            <Setter Property="BorderThickness" Value="0"/>
-            <Setter Property="Padding" Value="0"/>
-            <Setter Property="Margin" Value="0"/>
-            <Setter Property="IsReadOnly" Value="True"/>
-        </Style>
         <Style x:Key="ButtonStyle" TargetType="Button">
             <Setter Property="Background" Value="DarkGoldenrod"/>
             <Setter Property="Foreground" Value="AntiqueWhite"/>
@@ -67,129 +53,14 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="300"/>
             <ColumnDefinition Width="600"/>
-        </Grid.ColumnDefinitions>
-        
+        </Grid.ColumnDefinitions>        
         <Grid
             Grid.Column="0">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="150"/>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
-            <StackPanel
-                Orientation="Vertical"
-                VerticalAlignment="Bottom">
-
-                <StackPanel
-                    Orientation="Horizontal"
-                    Margin="20,0,0,0">
-                    <Label Content="Search" Style="{StaticResource SubHeaderStyle}"/>
-                    <TextBox
-                        x:Name="TextBox_Search"
-                        Width="150"
-                        Style="{StaticResource DetailTextBoxStyle}"/>
-                    <Button
-                        x:Name="Button_Search"
-                        Width="25"
-                        Height="25"
-                        Margin="10,0 0 0"
-                        Background="AntiqueWhite"
-                        Click="Button_Search_Click">
-                        <Image
-                            Width="25"
-                            Height="25"
-                            HorizontalAlignment="Center"
-                            VerticalAlignment="Center">
-                            <Image.Source>
-                                <BitmapImage UriSource="../Images/icon_search.png" />
-                            </Image.Source>
-                        </Image>
-                    </Button>
-                </StackPanel>
-
-                <StackPanel
-                    Orientation="Horizontal"
-                    Margin="20,0,0,0">
-                    <Label
-                        Content="Filter by Last Name:" 
-                        Style="{StaticResource SubHeaderStyle}"/>
-                      <ComboBox
-                          x:Name="ComboBox_LastNameFilter"
-                          Height="25"
-                          SelectionChanged="ComboBox_LastNameFilter_SelectionChanged">
-                        <ComboBoxItem Content="All Names" IsSelected="True"/>
-                        <ComboBoxItem Content="Flintstone"/>
-                        <ComboBoxItem Content="Rubble"/>
-                    </ComboBox>                  
-                </StackPanel>
-
-                <StackPanel
-                    Orientation="Vertical"
-                    Margin="20,0,0,0">
-                    <Label
-                        Content="Sort By:" 
-                        Style="{StaticResource SubHeaderStyle}"/>
-                    <StackPanel
-                        Margin="0"
-                        Orientation="Horizontal">
-                        <RadioButton 
-                            Name="RadioButton_LastNameSort"
-                            Content="Last Name"
-                            Style="{StaticResource RadioButtonStyle}"
-                            IsChecked="True"
-                            Checked="RadioButton_LastNameSort_Checked"/>
-                        <RadioButton 
-                            Name="RadioButton_AgeSort"
-                            Content="Age"
-                            Style="{StaticResource RadioButtonStyle}"
-                            Checked="RadioButton_AgeSort_Checked"/>
-                        <RadioButton 
-                            Name="RadioButton_AverageAnnualGrossSort"
-                            Content="Ave. Annual Gross"
-                            Style="{StaticResource RadioButtonStyle}"
-                            Checked="RadioButton_AverageAnnualGrossSort_Checked"/>
-                    </StackPanel>
-                </StackPanel>
-
-            </StackPanel>
-
-            <ListBox 
-                x:Name="ListBox_ProductList"
-                Grid.Row="1"
-                Margin="10,10,10,10"
-                BorderThickness="0"
-                Background="AntiqueWhite"
-                ItemsSource="{Binding ActiveProducts}"
-                SelectedItem="{Binding SelectedProduct, Mode=TwoWay}"
-                IsSynchronizedWithCurrentItem="true">
-                <ListBox.ItemTemplate>
-                    <DataTemplate>
-                        <StackPanel
-                            Orientation="Horizontal">
-                            <Border Margin="5" BorderBrush="Black" BorderThickness="1">
-                                <Image 
-                                    Source="{Binding ImageFilePath}" 
-                                    Stretch="UniformToFill"  
-                                    Width="40" 
-                                    Height="40" />
-                            </Border>
-                            <StackPanel
-                                Orientation="Vertical">
-                                <TextBox
-                                    Text="{Binding FullName, Mode=OneWay}"
-                                    Style="{StaticResource MasterTextBoxStyle}"/>
-                                <TextBox
-                                    Text="{Binding Age, StringFormat='\{0\} years old',Mode=OneWay }"
-                                    Style="{StaticResource MasterTextBoxStyle}"/>
-                                <TextBox
-                                    Text="{Binding AverageAnnualGross, StringFormat='\{0:C\}', Mode=OneWay}"
-                                    Style="{StaticResource MasterTextBoxStyle}"/>                                    
-                            </StackPanel>
-                        </StackPanel>
-                    </DataTemplate>
-                </ListBox.ItemTemplate>
-            </ListBox>                    
+            <Label
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center"
+                Content="Master List Area"/>            
         </Grid>
-
         <StackPanel
             Grid.Column="1"
             Orientation="Vertical">
@@ -203,14 +74,14 @@
                     Padding="0,0,0,0"
                     FontSize="12"
                     HorizontalAlignment="Center"
-                    Content="{Binding Company.Address}"
+                    Content="{Binding CompanyInfo.Address}"
                     Style="{StaticResource SubHeaderStyle}"/>
                 <Label
                     Margin="0,0,0,0"
                     Padding="0,0,0,0"
                     FontSize="12"
                     HorizontalAlignment="Center"
-                    Content="{Binding Company.City}"
+                    Content="{Binding CompanyInfo.City}"
                     Style="{StaticResource SubHeaderStyle}"/>
             </StackPanel>
             <Grid>
@@ -268,22 +139,6 @@
             <StackPanel 
                 Orientation="Horizontal"
                 HorizontalAlignment="Right">
-                <Button 
-                    x:Name="Button_Add" 
-                    Margin="10,10,10,10"
-                    VerticalAlignment="Center"           
-                    FontSize="20"
-                    Content="Add"
-                    Style="{StaticResource ButtonStyle}"
-                    Click="Button_Add_Click"/>
-                <Button 
-                    x:Name="Button_Delete" 
-                    Margin="10,10,10,10"
-                    VerticalAlignment="Center"           
-                    FontSize="20"
-                    Content="Delete"
-                    Style="{StaticResource ButtonStyle}"
-                    Click="Button_Delete_Click"/>
                 <Button 
                     x:Name="Button_Quit" 
                     Margin="10,10,20,10"

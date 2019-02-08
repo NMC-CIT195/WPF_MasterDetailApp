@@ -95,9 +95,9 @@ namespace WPF_MasterDetailApp
         {
             _productWindowPresenter = productPresenter;
 
-            InitializeComponent();
-
             DataContext = _productWindowPresenter;
+
+            InitializeComponent();
         }
 
         #endregion

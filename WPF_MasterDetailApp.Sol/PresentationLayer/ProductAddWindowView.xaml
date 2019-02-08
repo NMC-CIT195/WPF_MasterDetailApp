@@ -71,14 +71,14 @@
                     Padding="0,0,0,0"
                     FontSize="12"
                     HorizontalAlignment="Center"
-                    Content="{Binding TalentAgency.Address}"
+                    Content="{Binding Company.Address}"
                     Style="{StaticResource SubHeaderStyle}"/>
                 <Label
                     Margin="0,0,0,0"
                     Padding="0,0,0,0"
                     FontSize="12"
                     HorizontalAlignment="Center"
-                    Content="{Binding TalentAgency.City}"
+                    Content="{Binding Company.City}"
                     Style="{StaticResource SubHeaderStyle}"/>
             </StackPanel>
             <Grid>
