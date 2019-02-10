@@ -23,29 +23,19 @@ namespace WPF_MasterDetailApp
     {
         #region FIELDS
 
-        ProductWindowPresenter _productWindowPresenter;
+
 
         #endregion
 
         #region METHODS (pass events to view model)
 
-        private void Button_Quit_Click(object sender, RoutedEventArgs e)
-        {
-            Environment.Exit(0);
-        }
+
         
         #endregion
 
         #region CONSTRUCTORS
 
-        public ProductWindowView(ProductWindowPresenter productPresenter)
-        {
-            _productWindowPresenter = productPresenter;
 
-            DataContext = _productWindowPresenter;
-
-            InitializeComponent();
-        }
 
         #endregion
     }

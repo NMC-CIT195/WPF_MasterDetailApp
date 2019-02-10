@@ -52,9 +52,12 @@ namespace WPF_MasterDetailApp.Models
 
         #endregion
 
-
         #region METHODS
 
+        public void QuitApplication()
+        {
+            Environment.Exit(0);
+        }
 
         #endregion
 

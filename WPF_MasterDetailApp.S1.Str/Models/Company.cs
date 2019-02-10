@@ -6,10 +6,8 @@ using System.Threading.Tasks;
 
 namespace WPF_MasterDetailApp.Models
 {
-    public class Company : ObservableObject
+    public class Company
     {
-        public string Name { get; set; }
-        public string Address { get; set; }
-        public string City { get; set; }
+
     }
 }

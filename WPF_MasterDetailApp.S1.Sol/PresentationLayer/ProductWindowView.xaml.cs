@@ -31,7 +31,7 @@ namespace WPF_MasterDetailApp
 
         private void Button_Quit_Click(object sender, RoutedEventArgs e)
         {
-            Environment.Exit(0);
+            _productWindowPresenter.QuitApplication();
         }
         
         #endregion

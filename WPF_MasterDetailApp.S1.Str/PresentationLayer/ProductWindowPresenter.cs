@@ -11,49 +11,33 @@ using System.Windows.Input;
 
 namespace WPF_MasterDetailApp.Models
 {
-    public class ProductWindowPresenter : ObservableObject
+    public class ProductWindowPresenter
     {
-
         #region ENUMS
 
- 
+
         #endregion
 
         #region FIELDS
 
-        private Company _companyInfo;
-        private Product _selectedProduct;
+
 
         #endregion
 
         #region PROPERTIES
 
-        public Company CompanyInfo
-        {
-            get { return _companyInfo; }
-            set { _companyInfo = value; }
-        }
 
-        public Product SelectedProduct
-        {
-            get { return _selectedProduct; }
-            set { _selectedProduct = value; }
-        }
 
         #endregion
 
         #region CONSTRUCTORS
 
-        public ProductWindowPresenter(Company company, Product product)
-        {
-            _selectedProduct = product;
-            _companyInfo = company;
-        }
+
 
         #endregion
 
-
         #region METHODS
+
 
 
         #endregion
@@ -62,7 +46,5 @@ namespace WPF_MasterDetailApp.Models
 
 
         #endregion
-
-
     }
 }

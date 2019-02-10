@@ -62,11 +62,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BusinessLayer\ProductBL.cs" />
-    <Compile Include="DataAccessLayer\IDataService.cs" />
-    <Compile Include="DataAccessLayer\XmlDataService.cs" />
-    <Compile Include="Data\AppConfig.cs" />
     <Compile Include="Models\Company.cs" />
-    <Compile Include="Models\ObservableObject.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="PresentationLayer\Converters\NullToDateConverter.cs" />
     <Compile Include="PresentationLayer\ProductWindowPresenter.cs" />
@@ -90,7 +86,6 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="Models\Product.cd" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -103,37 +98,17 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Data\FlintstoneCharacters.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\bamm_bamm_rubble.gif" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\barney_rubble.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\betty_rubble.gif" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\dino.jpg" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Images\fred_flintstone.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\icon_search.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\pebbles_flintstone.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\wilma_flintstone.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Page Include="PresentationLayer\ProductWindowView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="DataAccessLayer\" />
+    <Folder Include="Data\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
