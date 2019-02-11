@@ -88,10 +88,11 @@
                 </Grid.ColumnDefinitions>
                 <StackPanel
                     Orientation="Vertical">
-                     <Image 
+                    <Image 
                         Grid.Column="0"
+                        x:Name="Image_ProductImage"   
                         Height="200"
-                        Source="{Binding ImageFilePath}"/>                   
+                        Margin="20"/>
                     <Button 
                         x:Name="Button_AddImage" 
                         Margin="10,10,10,10"

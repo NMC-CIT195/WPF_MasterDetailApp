@@ -56,19 +56,23 @@ namespace WPF_MasterDetailApp.Models
             }
         }
 
+        /// <summary>
+        /// all products currently in the data set
+        /// </summary>
         public List<Product> AllProducts
         {
             get { return _allProducts; }
             set { _allProducts = value; }
         }
 
+        /// <summary>
+        /// all products currently being displayed in the list box in the master area
+        /// </summary>
         public ObservableCollection<Product> ActiveProducts
         {
             get { return _activeProducts; }
             set { _activeProducts = value; }
         }
-
-
 
         #endregion
 
@@ -86,6 +90,14 @@ namespace WPF_MasterDetailApp.Models
 
         #region METHODS
 
+        public void QuitApplication()
+        {
+            Environment.Exit(0);
+        }
+
+        /// <summary>
+        /// delete the selected product if confirmed by user
+        /// </summary>
         public void DeleteProduct()
         {
             MessageBoxResult messageBoxResult = System.Windows.MessageBox.Show($"Are you sure you want to delete {_selectedProduct.FullName}?", "Delete Character", System.Windows.MessageBoxButton.OKCancel);
@@ -97,12 +109,15 @@ namespace WPF_MasterDetailApp.Models
             }
         }
 
+        /// <summary>
+        /// add a product by opening a new product window
+        /// the new product window does not have a presenter and the code behind
+        /// only handles validation
+        /// </summary>
         public void AddProduct()
         {
             Product newProduct = new Product();
-            ProductAddWindowPresenter productAddWindowPresenter = new ProductAddWindowPresenter();
             ProductAddWindowView productAddWindowView = new ProductAddWindowView(newProduct);
-
             productAddWindowView.ShowDialog();
 
             if (newProduct != null)
@@ -113,6 +128,10 @@ namespace WPF_MasterDetailApp.Models
             }
         }
 
+        /// <summary>
+        /// sort the active product list displayed in the master list by Last Name, Age, or Average Annual Gross
+        /// </summary>
+        /// <param name="productListSort">sort field</param>
         public void SortList(ProductListSort productListSort)
         {
             switch (productListSort)
@@ -134,6 +153,10 @@ namespace WPF_MasterDetailApp.Models
             }
         }
 
+        /// <summary>
+        /// filter the active product list displayed in the master list by Last Name chosen by the user
+        /// </summary>
+        /// <param name="lastName"></param>
         public void FilterListLastName(string lastName)
         {
             if (lastName != "All Names")
@@ -147,6 +170,10 @@ namespace WPF_MasterDetailApp.Models
             RaisePropertyChangedEvent("ActiveProducts");
         }
 
+        /// <summary>
+        /// search the Last Name in active product list displayed in the master list by the user search term
+        /// </summary>
+        /// <param name="searchTerm"></param>
         public void SearchListLastName(string searchTerm)
         {
             if (searchTerm != "")

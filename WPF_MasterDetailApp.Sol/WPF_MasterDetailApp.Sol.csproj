@@ -71,7 +71,6 @@
     <Compile Include="DataAccessLayer\XmlDataService.cs" />
     <Compile Include="Data\AppConfig.cs" />
     <Compile Include="Models\Product.cs" />
-    <Compile Include="PresentationLayer\ProductAddWindowPresenter.cs" />
     <Compile Include="PresentationLayer\ProductWindowPresenter.cs" />
     <Compile Include="Models\ObservableObject.cs" />
     <Compile Include="Models\Company.cs" />
@@ -112,19 +111,36 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\icon_search.png" />
+    <Content Include="Images\2109957_1.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\fred_flintstone.jpg" />
+    <Content Include="Images\icon_search.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Data\FlintstoneCharacters.xml" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\bamm_bamm_rubble.gif" />
-    <Resource Include="Images\barney_rubble.jpg" />
-    <Resource Include="Images\betty_rubble.gif" />
-    <Resource Include="Images\dino.jpg" />
-    <Resource Include="Images\fred_flintstone.jpg" />
-    <Resource Include="Images\pebbles_flintstone.jpg" />
-    <Resource Include="Images\wilma_flintstone.jpg" />
+    <Content Include="Images\bamm_bamm_rubble.gif">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\barney_rubble.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\betty_rubble.gif">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\dino.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\pebbles_flintstone.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\wilma_flintstone.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -13,6 +13,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Microsoft.Win32;
+using System.IO;
 
 namespace WPF_MasterDetailApp
 {
@@ -21,16 +23,13 @@ namespace WPF_MasterDetailApp
     /// </summary>
     public partial class ProductAddWindowView : Window
     {
-        Product _product;
         string _errorMessage;
+        Product _product;
 
         public ProductAddWindowView(Product product)
         {
             _product = product;
-
             InitializeComponent();
-
-            DataContext = _product;
         }
 
         private void Button_Cancel_Click(object sender, RoutedEventArgs e)
@@ -41,7 +40,51 @@ namespace WPF_MasterDetailApp
 
         private void Button_AddImage_Click(object sender, RoutedEventArgs e)
         {
+            //string imageFolderPath = System.IO.Directory.GetParent(Environment.CurrentDirectory).Parent.FullName + @"Images\";
+            string imageFolderPath = System.AppDomain.CurrentDomain.BaseDirectory + @"\Images\";
 
+            OpenFileDialog addImageDialog = new OpenFileDialog();
+
+            addImageDialog.Title = "Select an image";
+            addImageDialog.Filter =
+                "All supported graphics|*.jpg;*.jpeg;*.png|" +
+                "JPEG (*.jpg;*.jpeg)|*.jpg;*.jpeg|" +
+                "Portable Network Graphic (*.png)|*.png";
+
+            if (addImageDialog.ShowDialog() == true)
+            {
+                //
+                // update image on window
+                //
+                Image_ProductImage.Source = new BitmapImage(new Uri(addImageDialog.FileName));
+
+                //
+                // create image folder if it does not exist
+                //
+                if (!Directory.Exists(imageFolderPath))
+                {
+                    Directory.CreateDirectory(imageFolderPath);
+                }
+
+                //
+                // get image file name and path
+                //
+                string fileName = System.IO.Path.GetFileName(addImageDialog.FileName);
+                string filePath = imageFolderPath + fileName;
+
+
+                System.IO.File.Copy(addImageDialog.FileName, filePath, true);
+
+                _product.ImageFileName = fileName;
+            }
+        }
+
+        private bool SaveImageFileToFolder()
+        {
+            bool fileSavedToFolder = false;
+
+
+            return fileSavedToFolder;
         }
 
         private void Button_Save_Click(object sender, RoutedEventArgs e)

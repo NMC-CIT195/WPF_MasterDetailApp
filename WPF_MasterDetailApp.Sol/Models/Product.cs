@@ -23,6 +23,7 @@ namespace WPF_MasterDetailApp.Models
         private GenderType _gender;
         private string _fullName;
         private string _imageFileName;
+        private string _imageFilePath;
         private string _description;
         private DateTime _hireDate;
         private double _averageAnnualGross;
@@ -60,9 +61,13 @@ namespace WPF_MasterDetailApp.Models
         public int Age
         {
             get { return _age; }
-            set { _age = value; }
+            set
+            {
+                _age = value;
+                RaisePropertyChangedEvent("Age"); // update items bound to the FullName property
+            }
         }
-        
+
         public GenderType Gender
         {
             get { return _gender; }
@@ -72,9 +77,14 @@ namespace WPF_MasterDetailApp.Models
         public string ImageFileName
         {
             get { return _imageFileName; }
-            set { _imageFileName = value; }
+            set
+            {
+                _imageFileName = value;
+                _imageFilePath = @"../Images/" + _imageFileName;
+                RaisePropertyChangedEvent("ImageFileName"); // update items bound to the FullName property
+            }
         }
-        
+
         public string Description
         {
             get { return _description; }
@@ -100,7 +110,15 @@ namespace WPF_MasterDetailApp.Models
 
         public string ImageFilePath
         {
-            get { return @"../Images/" + _imageFileName; }
+            get
+            {
+                return _imageFilePath;
+            }
+            set
+            {
+                _imageFilePath = value;
+                RaisePropertyChangedEvent("ImageFilePath"); // update items bound to the FullName property
+            }
         }
 
         #endregion
