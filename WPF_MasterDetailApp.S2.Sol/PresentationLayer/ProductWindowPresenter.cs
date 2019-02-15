@@ -88,51 +88,11 @@ namespace WPF_MasterDetailApp.Models
 
         #endregion
 
-
         #region METHODS
 
         public void QuitApplication()
         {
             Environment.Exit(0);
-        }
-
-        /// <summary>
-        /// delete the selected product if confirmed by user
-        /// </summary>
-        public void DeleteProduct()
-        {
-            MessageBoxResult messageBoxResult = System.Windows.MessageBox.Show($"Are you sure you want to delete {_selectedProduct.FullName}?", "Delete Character", System.Windows.MessageBoxButton.OKCancel);
-
-            if (messageBoxResult == MessageBoxResult.OK)
-            {
-                _allProducts.Remove(_selectedProduct);
-                _activeProducts.Remove(_selectedProduct);
-            }
-        }
-
-        /// <summary>
-        /// add a product by opening a new product window
-        /// the new product window does not have a presenter and the code behind
-        /// only handles validation
-        /// </summary>
-        public void AddProduct()
-        {
-            Product newProduct = new Product();
-            ProductAddWindowView productAddWindowView = new ProductAddWindowView(newProduct);
-            productAddWindowView.ShowDialog();
-
-            //string packUri = "pack://application:,,,/AssemblyName;component/Images/dino.jpg";
-            //var Source = new ImageSourceConverter().ConvertFromString(packUri) as ImageSource;
-            var uriSource = new Uri("pack://application:,,,/AssemblyName;component/Images/dino.jpg", UriKind.RelativeOrAbsolute);
-
-            _selectedProduct.ImageFileName = newProduct.ImageFileName;
-
-            if (newProduct != null)
-            {
-                _allProducts.Add(newProduct);
-                _activeProducts = new ObservableCollection<Product>(_allProducts);
-                RaisePropertyChangedEvent("ActiveProducts");
-            }
         }
 
         /// <summary>

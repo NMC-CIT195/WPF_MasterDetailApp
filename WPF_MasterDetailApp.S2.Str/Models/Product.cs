@@ -21,9 +21,7 @@ namespace WPF_MasterDetailApp.Models
         private string _lastName;
         private int _age;
         private GenderType _gender;
-        private string _fullName;
         private string _imageFileName;
-        private string _imageFilePath;
         private string _description;
         private DateTime _hireDate;
         private double _averageAnnualGross;
@@ -44,7 +42,6 @@ namespace WPF_MasterDetailApp.Models
             set
             {
                 _firstName = value;
-                RaisePropertyChangedEvent("FullName"); // update items bound to the FullName property
             }
         }
 
@@ -54,20 +51,15 @@ namespace WPF_MasterDetailApp.Models
             set
             {
                 _lastName = value;
-                RaisePropertyChangedEvent("FullName"); // update items bound to the FullName property
             }
         }
 
         public int Age
         {
             get { return _age; }
-            set
-            {
-                _age = value;
-                RaisePropertyChangedEvent("Age"); // update items bound to the FullName property
-            }
+            set { _age = value; }
         }
-
+        
         public GenderType Gender
         {
             get { return _gender; }
@@ -77,14 +69,9 @@ namespace WPF_MasterDetailApp.Models
         public string ImageFileName
         {
             get { return _imageFileName; }
-            set
-            {
-                _imageFileName = value;
-                _imageFilePath = @"../Images/" + _imageFileName;
-                RaisePropertyChangedEvent("ImageFileName");
-            }
+            set { _imageFileName = value; }
         }
-
+        
         public string Description
         {
             get { return _description; }
@@ -110,15 +97,7 @@ namespace WPF_MasterDetailApp.Models
 
         public string ImageFilePath
         {
-            get
-            {
-                return _imageFilePath;
-            }
-            set
-            {
-                _imageFilePath = value;
-                RaisePropertyChangedEvent("ImageFilePath");
-            }
+            get { return @"../Images/" + _imageFileName; }
         }
 
         #endregion

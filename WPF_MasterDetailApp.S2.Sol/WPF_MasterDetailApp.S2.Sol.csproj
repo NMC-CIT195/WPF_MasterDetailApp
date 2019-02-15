@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{298E65BB-0EBC-401C-BBC7-ADB806FE998E}</ProjectGuid>
+    <ProjectGuid>{7F47981C-94AB-4F75-9FBA-ADD925F3A171}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>WPF_MasterDetailApp</RootNamespace>
     <AssemblyName>WPF_MasterDetailApp</AssemblyName>
@@ -54,36 +54,24 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="PresentationLayer\ProductAddWindowView.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="PresentationLayer\ProductWindowView.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+  </ItemGroup>
+  <ItemGroup>
     <Compile Include="BusinessLayer\ProductBL.cs" />
     <Compile Include="DataAccessLayer\IDataService.cs" />
     <Compile Include="DataAccessLayer\XmlDataService.cs" />
     <Compile Include="Data\AppConfig.cs" />
-    <Compile Include="Models\Product.cs" />
-    <Compile Include="PresentationLayer\ProductWindowPresenter.cs" />
-    <Compile Include="Models\ObservableObject.cs" />
     <Compile Include="Models\Company.cs" />
-    <Compile Include="PresentationLayer\ProductAddWindowView.xaml.cs">
-      <DependentUpon>ProductAddWindowView.xaml</DependentUpon>
-    </Compile>
+    <Compile Include="Models\ObservableObject.cs" />
+    <Compile Include="Models\Product.cs" />
+    <Compile Include="PresentationLayer\Converters\NullToDateConverter.cs" />
+    <Compile Include="PresentationLayer\ProductWindowPresenter.cs" />
     <Compile Include="PresentationLayer\ProductWindowView.xaml.cs">
       <DependentUpon>ProductWindowView.xaml</DependentUpon>
-      <SubType>Code</SubType>
     </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="PresentationLayer\Converters\NullToDateConverter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -111,14 +99,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Images\fred_flintstone.jpg">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Images\icon_search.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Data\FlintstoneCharacters.xml" />
   </ItemGroup>
   <ItemGroup>
@@ -134,12 +114,24 @@
     <Content Include="Images\dino.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Images\fred_flintstone.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\icon_search.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Images\pebbles_flintstone.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Images\wilma_flintstone.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="PresentationLayer\ProductWindowView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
